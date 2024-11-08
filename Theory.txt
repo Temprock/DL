@@ -1,0 +1,81 @@
+FeedForward neural network MNIST and CIFAR10
+
+Tensorflow-TensorFlow and Keras are popular tools in deep learning:
+
+Keras-Keras is a high-level API built on top of TensorFlow, designed to make model-building simpler and more intuitive.
+It provides an easy way to design neural networks with user-friendly functions for defining layers, compiling models, and training on data
+
+Feedforward Neural Network (FNN) is a type of artificial neural network where data flows in one direction: from the input layer, through hidden layers (if any), and finally to the output layer, without looping back.
+Here's how it works:
+1. Input Layer: Takes in the input data.
+2. Hidden Layers: Process the data by adjusting weights and biases to recognize patterns. Each neuron in these layers applies a mathematical function to the input data to learn features.
+3. Output Layer: Produces the final result, often used for classification, prediction, or regression tasks.
+
+MNIST: A dataset of 70,000 grayscale images of handwritten digits (0–9), each 28x28 pixels. It's widely used for beginner-level digit recognition tasks in machine learning.
+
+CIFAR-10: Contains 60,000 color images (32x32 pixels) across 10 classes, such as airplanes, cars, and animals. It’s used for basic object recognition challenges
+
+* ReLU is an activation function that outputs the input directly if it’s positive, and zero if it’s negative. This helps networks learn faster by allowing only the important signals (positive values) to pass through. It's commonly used in hidden layers.
+Softmax:
+* Softmax is an activation function that turns numbers into probabilities, where the sum of outputs is 1.
+
+
+An activation function decides if a neuron should "fire" by transforming its output, enabling neural networks to learn complex patterns.
+
+A neuron in a neural network is a computational unit that receives inputs, processes them through an activation function, and produces an output.
+
+epoch refers to one complete pass through the entire training dataset during the training process of a machine learning model
+model is trained over multiple epochs to improve its performance.
+
+Image Classification:
+
+Overfitting occurs when a machine learning model learns the details and noise in the training data to the extent that it negatively impacts its performance on new, unseen data. In other words, the model becomes too complex and is too closely fit to the training data, capturing patterns that do not generalize well to new data.
+
+In the image classification code above, we are building a machine learning model to recognize and classify handwritten digits (from the MNIST dataset) into 10 classes (0–9).
+
+Anomaly detection using Encoder and decoder
+
+The encoder compresses the input into a smaller, meaningful representation (latent space). This simplified form captures the essential patterns and features of the data.
+
+decoder takes this compressed latent representation and attempts to reconstruct the original input.
+
+1. Confusion Matrix: This is a table that shows the count of true positives, false positives, true negatives, and false negatives. It helps to understand how well the model is performing by comparing predicted labels with actual labels:
+    * True Positive (TP): Correctly predicted positives.
+    * False Positive (FP): Incorrectly predicted as positive.
+    * True Negative (TN): Correctly predicted negatives.
+    * False Negative (FN): Incorrectly predicted as negative.
+2. Example matrix:
+mathematica
+Copy code
+
+
+            Predicted Positive | Predicted Negative
+3. Actual Positive        TP                    FN
+4. Actual Negative        FP                    TN
+
+
+5. Classification Report: This report provides metrics like precision, recall, and F1-score for each class:
+    * Precision: How often the model’s positive predictions are correct (TP / (TP + FP)).
+    * Recall: How well the model identifies actual positives (TP / (TP + FN)).
+    * F1-Score: The balance between precision and recall.
+    * Accuracy: Overall correctness of the model across all classes ((TP + TN) / Total).
+
+CBOW:
+
+A tokenizer is a tool that converts text into smaller parts, usually individual words or tokens, making it easier for a model to understand.
+
+CBOW Function-
+The function generates training pairs for the CBOW model. For each word in a sentence, it collects the surrounding words within the window_size as context and the current word as the target. It then pads the context and one-hot encodes the target word, yielding these pairs for model training.
+
+5 most similar words based on the distance matrix.
+Output:
+You will get a list of 5 words most similar to the input word based on the learned word
+
+The similar words are determined based on the Euclidean distance between the word embeddings (learned by the CBOW model). Here's how it works:Euclidean distance calculates how "far apart" two words' vectors are
+
+Image classification using CNN:
+
+n image classification, class labels and actual labels refer to different parts of the classification process:
+1. Class Label: This is a predefined category or class that the model can predict. For example, in an animal classification task, possible class labels might be "cat," "dog," or "bird." These labels are mapped to integers internally, like 0 for "cat," 1 for "dog," and 2 for "bird."
+2. Actual Label: This is the true label of an image in your dataset—the category it actually belongs to. If you are classifying a picture of a cat, the actual label is "cat."
+A Convolutional Neural Network (CNN) is a type of deep learning model especially effective for processing visual data like images. CNNs are designed to automatically and adaptively learn spatial hierarchies of features (like edges, textures, and shapes) through patterns in images.
