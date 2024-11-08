@@ -1,0 +1,51 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+import seaborn as sns
+from tensorflow.keras.layers import BatchNormalization, Dense, Dropout, MaxPooling2D, Conv2D
+from tensorflow.keras.models import Model, Sequential
+from tensorflow.keras.utils import to_categorical
+
+train = pd.read_csv("mnist_train.csv")
+train
+
+test = pd.read_csv("mnist_test.csv")
+test
+
+train.isnull().sum().sum()
+
+x_train = train.drop(['label'], axis=1).values
+x_train
+
+x_train = x_train.astype('float32')/255
+
+y_train = train['label'].values
+
+model = Sequential()
+model.add(Dense(128, input_shape = (784, ) ,activation = 'relu'))
+model.add(Dense(64, activation = 'relu'))
+model.add(Dropout(0.2))
+model.add(Dense(10, activation = 'softmax'))
+
+model.compile(optimizer= 'adam', loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
+model.summary()
+
+r = model.fit(x_train, y_train, validation_split= 0.2, batch_size = 128, epochs = 11)
+
+x_test = test.drop(['label'], axis = 1).values
+y_test = test['label'].values
+
+x_test = x_test.astype('float32') / 255
+
+test_loss, test_accuracy = model.evaluate(x_test, y_test)
+
+r.history.keys()
+
+plt.plot(r.history['accuracy'], label = 'accuracy', color = 'green')
+plt.plot(r.history['val_accuracy'], label = 'val_accuracy', color = 'red')
+plt.legend()
+
+plt.plot(r.history['loss'], label = 'loss', color = 'red')
+plt.plot(r.history['val_loss'], label = 'val_loss', color = 'blue')
+plt.legend()
